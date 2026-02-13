@@ -1,0 +1,324 @@
+PROJECT TITLE
+
+RetailMind – AI-Driven Real-Time Marketing Decision Intelligence System
+
+🔷 PROJECT OVERVIEW
+
+Build a full-stack web application that provides a unified, real-time marketing decision intelligence dashboard for retail managers.
+
+The system must:
+
+Unify campaign, sales, customer behavior, and budget data
+
+Provide AI-based hybrid recommendations
+
+Detect anomalies in campaign performance
+
+Simulate budget allocation scenarios
+
+Generate automated natural-language reports
+
+Support role-based dashboards (Manager, Analyst, Leadership)
+
+🔷 TECH STACK (MANDATORY)
+
+Frontend:
+
+React (Vite or Next.js)
+
+Tailwind CSS
+
+Chart.js or Recharts
+
+Axios
+
+Socket.io client (for real-time updates)
+
+Backend:
+
+Flask (Python)
+
+Pandas
+
+Scikit-learn
+
+OpenAI API (for natural language insights)
+
+Flask-SocketIO
+
+SQLite (initially)
+
+REST APIs
+
+Optional:
+
+Redis (for caching)
+
+Docker (if supported)
+
+🔷 SYSTEM ARCHITECTURE
+
+Frontend (React)
+⬇
+Backend API (Flask REST)
+⬇
+AI Decision Engine
+⬇
+Data Layer (CSV / SQLite)
+⬇
+Real-time layer via Socket.io
+
+🔷 CORE FEATURES TO IMPLEMENT
+1️⃣ DATA UNIFICATION MODULE
+
+Create a unified marketing data model combining:
+
+Campaign Data (impressions, clicks, spend, channel)
+
+Sales Data (revenue, transactions, product)
+
+Customer Behavior (segments, repeat rate, cart size)
+
+Budget Data (allocated vs used)
+
+Backend Tasks:
+
+Create sample CSV datasets
+
+Load using Pandas
+
+Merge into unified dataframe
+
+Expose /api/dashboard-summary
+
+Frontend:
+
+Single dashboard view showing:
+
+Total revenue
+
+ROI
+
+Conversion rate
+
+Budget used %
+
+Channel comparison chart
+
+2️⃣ AI DECISION ENGINE
+
+Implement hybrid recommendation logic:
+
+A. Rule-Based Logic:
+
+If ROI < threshold → Suggest pause
+
+If conversion high & budget low → Suggest scale
+
+If spend high but sales low → Alert
+
+B. ML Model:
+
+Train simple regression model predicting ROI or sales uplift
+
+Use scikit-learn
+
+C. Anomaly Detection:
+
+Use IsolationForest or Z-score
+
+Detect unusual spend spikes or drop in conversions
+
+Expose API:
+/api/recommendations
+/api/anomalies
+
+Frontend:
+
+Show:
+
+Action cards (Pause / Scale / Monitor)
+
+Alert banner (Red if anomaly detected)
+
+3️⃣ CAMPAIGN HEALTH MONITOR
+
+Color-coded campaign statuses:
+
+🟢 Healthy (ROI > threshold)
+
+🟡 Needs Attention
+
+🔴 Critical
+
+Backend:
+
+Logic-based scoring system
+
+Return health score per campaign
+
+Frontend:
+
+Table with colored badges
+
+Filter by status
+
+4️⃣ BUDGET SIMULATOR
+
+Interactive optimizer.
+
+Frontend:
+
+Sliders to adjust budget allocation across channels
+
+Simulate impact
+
+Backend:
+
+Predict revenue based on adjusted budget
+
+Return projected ROI
+
+API:
+/api/budget-simulate
+
+5️⃣ AUTOMATED REPORTS
+
+Generate Natural Language summary:
+
+Example:
+"This week, social campaigns delivered 12% higher ROI while email underperformed. Consider reallocating 15% budget."
+
+Backend:
+
+Use OpenAI API
+
+Send structured metrics
+
+Return formatted executive summary
+
+Also:
+
+Enable export to PDF or CSV
+
+6️⃣ ROLE-BASED DASHBOARDS
+
+Implement authentication (basic role system).
+
+Roles:
+
+Manager → Full dashboard + recommendations
+
+Analyst → Detailed data view + export
+
+Leadership → High-level KPIs + ROI summary only
+
+Backend:
+
+Simple role-based route control
+
+Frontend:
+
+Conditional rendering based on role
+
+🔷 FOLDER STRUCTURE
+retailmind/
+│
+├── backend/
+│   ├── app.py
+│   ├── routes/
+│   ├── ai_engine/
+│   ├── models/
+│   ├── data/
+│   ├── utils/
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   └── App.jsx
+│   └── package.json
+│
+└── README.md
+
+🔷 API ENDPOINTS REQUIRED
+
+GET /api/dashboard-summary
+
+GET /api/recommendations
+
+GET /api/anomalies
+
+POST /api/budget-simulate
+
+GET /api/report
+
+GET /api/campaign-health
+
+🔷 REAL-TIME SUPPORT
+
+Use Flask-SocketIO:
+
+Emit live updates when campaign data changes
+
+Frontend auto-refresh KPIs
+
+🔷 PERFORMANCE METRICS
+
+System should calculate:
+
+ROI
+
+Conversion Rate
+
+Revenue Growth %
+
+Budget Utilization %
+
+Channel Contribution
+
+Anomaly Count
+
+🔷 NON-FUNCTIONAL REQUIREMENTS
+
+Clean UI (modern dashboard style)
+
+Responsive design
+
+Error handling
+
+Loading states
+
+Modular backend structure
+
+Clear documentation in README
+
+🔷 SAMPLE DATA REQUIREMENTS
+
+Generate synthetic dataset including:
+
+6 marketing channels
+
+3 customer segments
+
+30–60 days of campaign data
+
+Budget allocations
+
+Revenue outcomes
+
+🔷 EVALUATION METRICS (For Hackathon)
+
+System should demonstrate:
+
+Real-time insights
+
+AI-based decision guidance
+
+Business metric clarity
+
+Usability for managers
+
+Scalability to other sectors
