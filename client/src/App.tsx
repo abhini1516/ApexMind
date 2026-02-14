@@ -28,15 +28,10 @@ function AuthenticatedLayout({ children }: { children: React.ReactNode }) {
 function Router() {
   const { user, isLoading } = useAuth();
 
-  if (isLoading) {
-    return <div className="h-screen w-screen flex items-center justify-center bg-background">
-      <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-    </div>;
-  }
+  if (isLoading) return <div>Loading...</div>;
 
-  if (!user) {
-    return <Login />;
-  }
+
+  if (!user) return <Login />;
 
   return (
     <AuthenticatedLayout>
